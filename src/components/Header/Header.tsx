@@ -1,3 +1,5 @@
+import { faMoon } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import "./Header.scss";
 
@@ -27,7 +29,10 @@ const Header = () => {
     <div className="header">
       <div className="logo">Where in the world?</div>
       <button className="theme-switcher" onClick={handleThemeChange}>
-        {themeName}
+        <div className="theme-switcher__holder">
+          <FontAwesomeIcon className="theme-switcher__icon" icon={faMoon} />
+          {themeName}
+        </div>
       </button>
     </div>
   );

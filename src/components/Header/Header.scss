@@ -12,7 +12,22 @@
 
   color: var(--text-color);
 
+  .theme-switcher__holder {
+    display: flex;
+    align-items: center;
+  }
+
+  .theme-switcher__icon {
+    transform: rotate(-28deg);
+    margin-right: 10px;
+    margin-top: 2px;
+  }
+
   .theme-light & {
     background-color: #fff;
+  }
+
+  @media (max-width: 767px) {
+    padding: 2rem 1rem;
   }
 }
