@@ -12,16 +12,20 @@ const Header = () => {
   };
 
   useEffect(() => {
+    const bodyNode = document.querySelector("body");
+
     if (theme === "light") {
-      document.querySelector("body")?.classList.add("light");
+      bodyNode?.classList.add("theme-light");
+      bodyNode?.classList.remove("theme-dark");
     } else {
-      document.querySelector("body")?.classList.remove("light");
+      bodyNode?.classList.add("theme-dark");
+      bodyNode?.classList.remove("theme-light");
     }
   }, [theme]);
 
   return (
     <div className="header">
-      <div>Where in the world?</div>
+      <div className="logo">Where in the world?</div>
       <button className="theme-switcher" onClick={handleThemeChange}>
         {themeName}
       </button>
