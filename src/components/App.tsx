@@ -1,6 +1,7 @@
 import { useState } from "react";
 import reactLogo from "../assets/react.svg";
 import "./App.scss";
+import Header from "./Header/Header";
 import viteLogo from "/vite.svg";
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
 
   return (
     <>
+      <Header themeName="Dark Mode" />
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
