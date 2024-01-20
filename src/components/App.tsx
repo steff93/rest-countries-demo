@@ -9,7 +9,7 @@ function App() {
 
   return (
     <>
-      <Header themeName="Dark Mode" />
+      <Header />
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
