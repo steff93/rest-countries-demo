@@ -52,6 +52,9 @@ body {
     --elements-color: hsl(0, 0%, 100%);
     --text-color: hsl(200, 15%, 8%);
   }
+
+  will-change: color, background-color;
+  transition: all 200ms ease-in-out;
 }
 
 h1 {
