@@ -29,7 +29,7 @@ const Header = () => {
 
   return (
     <div className="header">
-      <div className="logo">Where in the world?</div>
+      <h1 className="logo">Where in the world?</h1>
       <button className="theme-switcher" onClick={handleThemeChange}>
         <div className="theme-switcher__holder">
           <FontAwesomeIcon className="theme-switcher__icon" icon={themeIcon} />

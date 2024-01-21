@@ -1,5 +1,7 @@
+@import "./fonts/fonts.css";
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: NunitoLight, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -53,8 +55,10 @@ body {
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 2rem;
   line-height: 1.1;
+
+  margin: 0;
 }
 
 button {
@@ -65,4 +69,10 @@ button {
   font: inherit;
 
   color: currentColor;
+}
+
+@media (max-width: 767px) {
+  h1 {
+    font-size: 2rem;
+  }
 }
