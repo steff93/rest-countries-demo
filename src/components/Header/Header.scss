@@ -34,5 +34,9 @@
 
   @media (max-width: 767px) {
     padding: 2rem 1rem;
+
+    .theme-switcher__holder {
+      font-size: 0.8rem;
+    }
   }
 }
