@@ -1,20 +1,16 @@
 import { useEffect, useState } from "react";
+import { REST_COUNTRIES_API_ALL } from "../../apiConfig";
+import { getApiData } from "../../dataHelpers";
 import "./CountriesList.scss";
 import Country from "./Country";
-
-const API_URL = "https://restcountries.com/v3.1/all";
 
 const CountriesList = () => {
   const [countriesList, setCountriesList] = useState<Array<any>>([]);
 
   useEffect(() => {
-    fetch(API_URL)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setCountriesList(data);
-      });
+    getApiData(REST_COUNTRIES_API_ALL).then((response) =>
+      setCountriesList(response)
+    );
   }, []);
 
   return (
@@ -30,7 +26,7 @@ const CountriesList = () => {
             population={country.population}
             region={country.region}
             capital={country.capital}
-            key={country.area}
+            key={country.area + country.name.common}
           />
         );
       })}
