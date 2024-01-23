@@ -1,7 +1,7 @@
 interface CountryData {
   flag: string;
   title: string;
-  population: string | number;
+  population: number;
   region: string;
   capital: string;
 }
