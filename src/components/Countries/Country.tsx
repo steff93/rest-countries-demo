@@ -3,7 +3,7 @@ interface CountryData {
   title: string;
   population: number;
   region: string;
-  capital: string;
+  capital: string[] | undefined;
 }
 
 const Country = ({ flag, title, population, region, capital }: CountryData) => {
@@ -24,7 +24,8 @@ const Country = ({ flag, title, population, region, capital }: CountryData) => {
         </div>
 
         <div className="country-capital">
-          <strong>Capital:</strong> <span>{capital}</span>
+          <strong>Capital:</strong>
+          <span>{capital?.join(" ") || undefined}</span>
         </div>
       </div>
     </a>
