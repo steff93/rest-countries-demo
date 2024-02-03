@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { REST_COUNTRIES_API_ALL } from "../../apiConfig";
 import { getApiData } from "../../dataHelpers";
 import { CountryData } from "../../types";
@@ -6,21 +6,18 @@ import "./CountriesList.scss";
 import Country from "./Country";
 
 const CountriesList = () => {
-  const [countriesList, setCountriesList] = useState<Array<CountryData>>([]);
-
-  useEffect(() => {
-    getApiData(REST_COUNTRIES_API_ALL).then((response) =>
-      setCountriesList(response)
-    );
-  }, []);
+  const { isLoading, data: countriesList } = useQuery({
+    queryKey: ["countries"],
+    queryFn: () => getApiData(REST_COUNTRIES_API_ALL),
+  });
 
   return (
     <div
       className="countries-list"
       style={{ paddingTop: "var(--headerHeight)" }}
     >
-      {countriesList.length &&
-        countriesList.map((country) => {
+      {!isLoading &&
+        (countriesList as Array<CountryData>).map((country) => {
           return (
             <Country
               flag={country.flags.png}
