@@ -1,34 +1,62 @@
 import { useQuery } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
 import { REST_COUNTRIES_API_ALL } from "../../apiConfig";
 import { getApiData } from "../../dataHelpers";
 import { CountryData } from "../../types";
+import { Search } from "../Search/Search";
 import "./CountriesList.scss";
 import Country from "./Country";
 
 const CountriesList = () => {
-  const { isLoading, data: countriesList } = useQuery({
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState<Array<CountryData>>([]);
+
+  const {
+    isLoading,
+    data: countriesList,
+  }: { isLoading: boolean; data: Array<CountryData> | undefined } = useQuery({
     queryKey: ["countries"],
     queryFn: () => getApiData(REST_COUNTRIES_API_ALL),
   });
 
+  const handleSearchSubmit = (value: string) => {
+    setSearchQuery(value);
+  };
+
+  const listToUse = searchResults.length ? searchResults : countriesList;
+
+  useEffect(() => {
+    const results = countriesList?.filter((country) => {
+      return country.name.common
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase());
+    });
+
+    if (results) setSearchResults(results);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchQuery]);
+
   return (
-    <div
-      className="countries-list"
-      style={{ paddingTop: "var(--headerHeight)" }}
-    >
-      {!isLoading &&
-        (countriesList as Array<CountryData>).map((country) => {
-          return (
-            <Country
-              flag={country.flags.png}
-              title={country.name.common}
-              population={country.population}
-              region={country.region}
-              capital={country.capital}
-              key={country.area + country.name.common}
-            />
-          );
-        })}
+    <div className="countries" style={{ paddingTop: 100 }}>
+      <div className="results-actions">
+        <Search onSearchSubmit={handleSearchSubmit} />
+      </div>
+      <div className="countries-list">
+        {!isLoading &&
+          listToUse &&
+          listToUse.map((country) => {
+            return (
+              <Country
+                flag={country.flags.png}
+                title={country.name.common}
+                population={country.population}
+                region={country.region}
+                capital={country.capital}
+                key={country.area + country.name.common}
+              />
+            );
+          })}
+      </div>
     </div>
   );
 };
