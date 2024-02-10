@@ -3,6 +3,10 @@
   margin: 0 auto;
   padding: 0 4rem;
   text-align: center;
+
+  @media (max-width: 767px) {
+    padding: 0 2rem;
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
