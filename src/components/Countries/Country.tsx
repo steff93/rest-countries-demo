@@ -1,3 +1,5 @@
+import "./Country.scss";
+
 interface CountryData {
   flag: string;
   title: string;
@@ -12,9 +14,9 @@ const Country = ({ flag, title, population, region, capital }: CountryData) => {
       <img src={flag} alt={`${title}-flag`} />
 
       <div className="details">
-        <div className="country-name">
+        <h3 className="country-name">
           <strong>{title}</strong>
-        </div>
+        </h3>
         <div className="country-population">
           <strong>Population:</strong> <span>{population}</span>
         </div>
