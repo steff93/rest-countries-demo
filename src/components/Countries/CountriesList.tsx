@@ -4,6 +4,7 @@ import { REST_COUNTRIES_API_ALL } from "../../apiConfig";
 import { getApiData } from "../../dataHelpers";
 import { CountryData } from "../../types";
 import { Search } from "../Search/Search";
+import Sort from "../Sort/Sort";
 import "./CountriesList.scss";
 import Country from "./Country";
 
@@ -19,11 +20,18 @@ const CountriesList = () => {
     queryFn: () => getApiData(REST_COUNTRIES_API_ALL),
   });
 
+  const listToUse = searchResults.length ? searchResults : countriesList;
+  const countryRegions: string[] = [];
+
+  countriesList?.forEach((country) => {
+    if (!countryRegions.includes(country.region)) {
+      countryRegions.push(country.region);
+    }
+  });
+
   const handleSearchSubmit = (value: string) => {
     setSearchQuery(value);
   };
-
-  const listToUse = searchResults.length ? searchResults : countriesList;
 
   useEffect(() => {
     const results = countriesList?.filter((country) => {
@@ -40,6 +48,7 @@ const CountriesList = () => {
     <div className="countries" style={{ paddingTop: 100 }}>
       <div className="results-actions">
         <Search onSearchSubmit={handleSearchSubmit} />
+        <Sort onSort={() => console.log("sort")} regions={countryRegions} />
       </div>
       <div className="countries-list">
         {!isLoading &&
