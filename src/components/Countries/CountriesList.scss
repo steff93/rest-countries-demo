@@ -1,3 +1,9 @@
+.results-actions {
+  padding: 50px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
 .countries-list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

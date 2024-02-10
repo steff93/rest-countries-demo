@@ -1,3 +1,5 @@
+import "./Search.scss";
+
 import React, { useRef } from "react";
 
 interface SearchProps {
