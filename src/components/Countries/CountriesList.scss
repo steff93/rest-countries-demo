@@ -11,6 +11,11 @@
 }
 
 @media (max-width: 767px) {
+  .results-actions {
+    flex-direction: column;
+    padding-top: 30px;
+  }
+
   .countries-list {
     grid-template-columns: 1fr;
   }

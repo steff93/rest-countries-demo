@@ -39,4 +39,8 @@
     padding: 5px 20px;
     text-align: left;
   }
+
+  @media (max-width: 767px) {
+    margin-top: 40px;
+  }
 }
