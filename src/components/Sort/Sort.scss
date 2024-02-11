@@ -1,0 +1,42 @@
+.sort {
+  position: relative;
+  cursor: pointer;
+
+  &__select {
+    background-color: var(--elements-color);
+    height: 50px;
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    min-width: 200px;
+    align-items: center;
+    border-radius: var(--border-radius);
+
+    &--expanded {
+      .sort__icon {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &__icon {
+    transition: all 0.3s ease;
+  }
+
+  &__regions {
+    background-color: var(--elements-color);
+    padding-left: 0;
+    position: absolute;
+    width: 100%;
+
+    padding: 10px 0;
+    border-radius: var(--border-radius);
+  }
+
+  &__region {
+    list-style: none;
+
+    padding: 5px 20px;
+    text-align: left;
+  }
+}
