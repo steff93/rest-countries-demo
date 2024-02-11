@@ -10,6 +10,7 @@ import Country from "./Country";
 
 const CountriesList = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [sortRegion, setSortRegion] = useState("All");
   const [searchResults, setSearchResults] = useState<Array<CountryData>>([]);
 
   const {
@@ -20,7 +21,8 @@ const CountriesList = () => {
     queryFn: () => getApiData(REST_COUNTRIES_API_ALL),
   });
 
-  const listToUse = searchResults.length ? searchResults : countriesList;
+  let listToUse = searchResults.length ? searchResults : countriesList;
+
   const countryRegions: string[] = [];
 
   countriesList?.forEach((country) => {
@@ -32,6 +34,22 @@ const CountriesList = () => {
   const handleSearchSubmit = (value: string) => {
     setSearchQuery(value);
   };
+
+  const handleSort = (region: string) => {
+    setSortRegion(region);
+  };
+
+  const sortCountriesByRegion = (list: CountryData[] | undefined) => {
+    if (sortRegion === "All") {
+      return list;
+    }
+
+    return list?.filter((country) => {
+      return country.region.toLowerCase() === sortRegion.toLowerCase();
+    });
+  };
+
+  listToUse = sortCountriesByRegion(listToUse);
 
   useEffect(() => {
     const results = countriesList?.filter((country) => {
@@ -48,7 +66,7 @@ const CountriesList = () => {
     <div className="countries" style={{ paddingTop: 100 }}>
       <div className="results-actions">
         <Search onSearchSubmit={handleSearchSubmit} />
-        <Sort onSort={() => console.log("sort")} regions={countryRegions} />
+        <Sort onSort={handleSort} regions={countryRegions} />
       </div>
       <div className="countries-list">
         {!isLoading &&

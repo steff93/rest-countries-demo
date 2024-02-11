@@ -6,7 +6,7 @@
 import { useState } from "react";
 
 interface SortProps {
-  onSort: () => void;
+  onSort: (region: string) => void;
   regions: string[];
 }
 
@@ -23,7 +23,7 @@ const Sort = ({ onSort, regions }: SortProps) => {
   const handleClick = (region: string) => {
     setSelectedRegion(region);
 
-    onSort();
+    onSort(region);
   };
 
   return (
