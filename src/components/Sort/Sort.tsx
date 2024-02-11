@@ -4,14 +4,15 @@
 // Default value
 
 import { useState } from "react";
+import { Region } from "../../types";
 
 interface SortProps {
-  onSort: (region: string) => void;
-  regions: string[];
+  onSort: (region: Region) => void;
+  regions: Region[];
 }
 
 const Sort = ({ onSort, regions }: SortProps) => {
-  const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
+  const [selectedRegion, setSelectedRegion] = useState<Region | null>(null);
   const defaultValue = "Filter By Region";
   const highlightedValue =
     selectedRegion && selectedRegion !== "All" ? selectedRegion : defaultValue;
@@ -20,7 +21,7 @@ const Sort = ({ onSort, regions }: SortProps) => {
     regions.push("All");
   }
 
-  const handleClick = (region: string) => {
+  const handleClick = (region: Region) => {
     setSelectedRegion(region);
 
     onSort(region);

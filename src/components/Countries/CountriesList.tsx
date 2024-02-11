@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { REST_COUNTRIES_API_ALL } from "../../apiConfig";
 import { getApiData } from "../../dataHelpers";
-import { CountryData } from "../../types";
+import { CountryData, Region } from "../../types";
 import { Search } from "../Search/Search";
 import Sort from "../Sort/Sort";
 import "./CountriesList.scss";
@@ -10,7 +10,7 @@ import Country from "./Country";
 
 const CountriesList = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [sortRegion, setSortRegion] = useState("All");
+  const [sortRegion, setSortRegion] = useState<Region>("All");
   const [searchResults, setSearchResults] = useState<Array<CountryData>>([]);
 
   const {
@@ -23,7 +23,7 @@ const CountriesList = () => {
 
   let listToUse = searchResults.length ? searchResults : countriesList;
 
-  const countryRegions: string[] = [];
+  const countryRegions: Region[] = [];
 
   countriesList?.forEach((country) => {
     if (!countryRegions.includes(country.region)) {
@@ -35,7 +35,7 @@ const CountriesList = () => {
     setSearchQuery(value);
   };
 
-  const handleSort = (region: string) => {
+  const handleSort = (region: Region) => {
     setSortRegion(region);
   };
 
@@ -45,7 +45,7 @@ const CountriesList = () => {
     }
 
     return list?.filter((country) => {
-      return country.region.toLowerCase() === sortRegion.toLowerCase();
+      return country.region === sortRegion;
     });
   };
 

@@ -30,7 +30,7 @@ export type CountryData = {
   };
   capital: string[] | undefined;
   altSpellings: string[];
-  region: string;
+  region: Region;
   subregion: string;
   languages: {
     [key: string]: string;
@@ -66,3 +66,12 @@ export type CountryData = {
     regex: string;
   };
 };
+
+export type Region =
+  | "Europe"
+  | "Antarctic"
+  | "Asia"
+  | "Americas"
+  | "Africa"
+  | "Oceania"
+  | "All";
