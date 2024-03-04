@@ -1,14 +1,18 @@
 .country-info {
   background-color: var(--elements-color);
+  border-radius: var(--border-radius);
 
   img {
     height: 170px;
     width: 100%;
     object-fit: cover;
+    border-top-right-radius: var(--border-radius);
+    border-top-left-radius: var(--border-radius);
   }
 
   .details {
     text-align: left;
-    color: #fff;
+    color: var(--text-color);
+    padding: 0 25px 30px;
   }
 }

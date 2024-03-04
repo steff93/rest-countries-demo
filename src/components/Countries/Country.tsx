@@ -1,3 +1,4 @@
+import { formatNumber } from "../../miscHelpers";
 import "./Country.scss";
 
 interface CountryProps {
@@ -24,7 +25,7 @@ const Country = ({
           <strong>{title}</strong>
         </h3>
         <div className="country-population">
-          <strong>Population:</strong> <span>{population}</span>
+          <strong>Population:</strong> <span>{formatNumber(population)}</span>
         </div>
 
         <div className="country-region">
@@ -32,7 +33,7 @@ const Country = ({
         </div>
 
         <div className="country-capital">
-          <strong>Capital:</strong>
+          <strong>Capital:</strong>{" "}
           <span>{capital?.join(" ") || undefined}</span>
         </div>
       </div>
