@@ -1,6 +1,6 @@
 import "./Country.scss";
 
-interface CountryData {
+interface CountryProps {
   flag: string;
   title: string;
   population: number;
@@ -8,7 +8,13 @@ interface CountryData {
   capital: string[] | undefined;
 }
 
-const Country = ({ flag, title, population, region, capital }: CountryData) => {
+const Country = ({
+  flag,
+  title,
+  population,
+  region,
+  capital,
+}: CountryProps) => {
   return (
     <a className="country-info">
       <img src={flag} alt={`${title}-flag`} />
