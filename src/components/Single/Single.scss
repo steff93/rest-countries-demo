@@ -1,2 +1,25 @@
-@media (max-width: 767px) {
+.country-single {
+  &__header {
+    margin: 4rem 0;
+
+    display: flex;
+  }
+
+  &__back-button {
+    display: flex;
+    align-items: center;
+    padding: 5px 32px;
+    background-color: var(--elements-color);
+    cursor: pointer;
+    border-radius: var(--border-radius);
+
+    box-shadow: 0px 0px 1px 1px var(--elements-color);
+  }
+
+  &__back-icon {
+    margin-right: 10px;
+  }
+
+  @media (max-width: 767px) {
+  }
 }

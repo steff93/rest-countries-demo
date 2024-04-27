@@ -1,3 +1,5 @@
+import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CountryData } from "../../types";
 import "./Single.scss";
 
@@ -26,11 +28,24 @@ const CountryDetail = ({ countryData }: CountryDetailProps) => {
     return [...acc, currency.name];
   }, [] as string[]);
 
-  console.log(borders);
+  const handleBackAction = () => {
+    console.log("go back!");
+  };
 
   return (
     <div className={sectionClass}>
-      <button className="back-button">Back</button>
+      <div className={`${sectionClass}__header`}>
+        <button
+          className={`${sectionClass}__back-button`}
+          onClick={handleBackAction}
+        >
+          <FontAwesomeIcon
+            icon={faArrowLeftLong}
+            className={`${sectionClass}__back-icon`}
+          />
+          <span>Back</span>
+        </button>
+      </div>
 
       <div className={`${sectionClass}__info`}>
         <div className={`${sectionClass}__flag`}>

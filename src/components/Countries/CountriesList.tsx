@@ -62,8 +62,11 @@ const CountriesList = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchQuery]);
 
+  // const demoData = listToUse?.length ? listToUse[4] : undefined;
+
   return (
     <div className="countries" style={{ paddingTop: 100 }}>
+      {/* {true && !!demoData && <CountryDetail countryData={demoData} />} */}
       <div className="results-actions">
         <Search onSearchSubmit={handleSearchSubmit} />
         <Sort onSort={handleSort} regions={countryRegions} />
