@@ -12,7 +12,25 @@ const useCountriesData = () => {
     queryFn: () => getApiData(REST_COUNTRIES_API_ALL),
   });
 
-  return { isLoading, countriesList };
+  const getCountriesNameByCCA3 = (cca3s: string[] | undefined) => {
+    if (!cca3s) return undefined;
+
+    return cca3s.reduce((acc, shortName) => {
+      const commonName = countriesList?.find(
+        (country) => country.cca3 === shortName
+      )?.name.common;
+
+      if (commonName) return [...acc, commonName];
+
+      return acc;
+    }, [] as string[]);
+  };
+
+  return {
+    isLoading,
+    countriesList,
+    getCountryNameByCCA3: getCountriesNameByCCA3,
+  };
 };
 
 export default useCountriesData;

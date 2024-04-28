@@ -1,5 +1,6 @@
 import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import useCountriesData from "../../hooks/useCountriesData";
 import { formatNumber } from "../../miscHelpers";
 import { CountryData } from "../../types";
 import "./Single.scss";
@@ -25,15 +26,17 @@ const CountryDetail = ({ countryData }: CountryDetailProps) => {
     borders,
   } = countryData;
 
+  const { getCountryNameByCCA3 } = useCountriesData();
+
   const currenciesList = Object.values(currencies).reduce((acc, currency) => {
     return [...acc, currency.name];
   }, [] as string[]);
 
+  const bordersCommonNames = getCountryNameByCCA3(borders);
+
   const handleBackAction = () => {
     console.log("go back!");
   };
-
-  console.log(borders);
 
   return (
     <div className={sectionClass}>
@@ -93,8 +96,8 @@ const CountryDetail = ({ countryData }: CountryDetailProps) => {
               <strong className={`${sectionClass}__borders--title`}>
                 Border Countries:
               </strong>
-              {borders &&
-                borders.map((border, index) => {
+              {bordersCommonNames &&
+                bordersCommonNames.map((border, index) => {
                   return (
                     <div
                       className={`${sectionClass}__border button`}

@@ -55,6 +55,7 @@
   &__borders {
     flex-basis: 100%;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
 
     margin-top: 20px;
