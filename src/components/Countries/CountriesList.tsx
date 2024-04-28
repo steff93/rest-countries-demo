@@ -1,7 +1,5 @@
-import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
-import { REST_COUNTRIES_API_ALL } from "../../apiConfig";
-import { getApiData } from "../../dataHelpers";
+import useCountriesData from "../../hooks/useCountriesData";
 import { CountryData, Region } from "../../types";
 import { Search } from "../Search/Search";
 import Sort from "../Sort/Sort";
@@ -13,13 +11,7 @@ const CountriesList = () => {
   const [sortRegion, setSortRegion] = useState<Region>("All");
   const [searchResults, setSearchResults] = useState<Array<CountryData>>([]);
 
-  const {
-    isLoading,
-    data: countriesList,
-  }: { isLoading: boolean; data: Array<CountryData> | undefined } = useQuery({
-    queryKey: ["countries"],
-    queryFn: () => getApiData(REST_COUNTRIES_API_ALL),
-  });
+  const { isLoading, countriesList } = useCountriesData();
 
   let listToUse = searchResults.length ? searchResults : countriesList;
 
@@ -62,7 +54,7 @@ const CountriesList = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchQuery]);
 
-  // const demoData = listToUse?.length ? listToUse[4] : undefined;
+  // const demoData = listToUse?.length ? listToUse[34] : undefined;
 
   return (
     <div className="countries" style={{ paddingTop: 100 }}>
