@@ -78,5 +78,28 @@
   }
 
   @media (max-width: 767px) {
+    &__header {
+      margin: 2rem 0;
+    }
+
+    &__info {
+      flex-direction: column;
+      max-height: 100%;
+    }
+
+    &__flag,
+    &__data {
+      width: 100%;
+    }
+
+    &__details {
+      flex-direction: column;
+    }
+
+    &__borders--title {
+      flex-basis: 100%;
+      text-align: left;
+      margin-bottom: 15px;
+    }
   }
 }
