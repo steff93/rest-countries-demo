@@ -1,5 +1,6 @@
 import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { formatNumber } from "../../miscHelpers";
 import { CountryData } from "../../types";
 import "./Single.scss";
 
@@ -36,7 +37,7 @@ const CountryDetail = ({ countryData }: CountryDetailProps) => {
     <div className={sectionClass}>
       <div className={`${sectionClass}__header`}>
         <button
-          className={`${sectionClass}__back-button`}
+          className={`${sectionClass}__back-button button`}
           onClick={handleBackAction}
         >
           <FontAwesomeIcon
@@ -53,49 +54,56 @@ const CountryDetail = ({ countryData }: CountryDetailProps) => {
         </div>
 
         <div className={`${sectionClass}__data`}>
-          <h3 className={`${sectionClass}__name`}>{countryName}</h3>
+          <h2 className={`${sectionClass}__name`}>{countryName}</h2>
 
           <div className={`${sectionClass}__details`}>
             <div className={`${sectionClass}__details--left`}>
               <h5 className={`${sectionClass}__native-name`}>
-                <b>Native Name:</b> {nativeName}
+                <strong>Native Name:</strong> {nativeName}
               </h5>
 
               <h5 className={`${sectionClass}__population`}>
-                <b>Population:</b> {population}
+                <strong>Population:</strong> {formatNumber(population)}
               </h5>
 
               <h5 className={`${sectionClass}__region`}>
-                <b>Region:</b> {region}
+                <strong>Region:</strong> {region}
               </h5>
 
               <h5 className={`${sectionClass}__capital`}>
-                <b>Capital:</b> {capital?.length ? capital[0] : "N/A"}
+                <strong>Capital:</strong> {capital?.length ? capital[0] : "N/A"}
               </h5>
             </div>
             <div className={`${sectionClass}__details--right`}>
               <h5 className={`${sectionClass}__domain`}>
-                <b>Top Level Domain:</b> .{domainName.toLowerCase()}
+                <strong>Top Level Domain:</strong> .{domainName.toLowerCase()}
               </h5>
               <h5 className={`${sectionClass}__currency`}>
-                <b>Currencies:</b> {currenciesList.join(", ")}
+                <strong>Currencies:</strong> {currenciesList.join(", ")}
               </h5>
               <h5 className={`${sectionClass}__language`}>
-                <b>Languages:</b> {Object.values(languages).join(", ")}
+                <strong>Languages:</strong>{" "}
+                {Object.values(languages).join(", ")}
               </h5>
             </div>
-          </div>
-        </div>
 
-        <div className={`${sectionClass}__borders`}>
-          <span>Border Countries</span>
-          {borders.map((border, index) => {
-            return (
-              <div className={`${sectionClass}__border`} key={index}>
-                {border}
-              </div>
-            );
-          })}
+            <div className={`${sectionClass}__borders`}>
+              <strong className={`${sectionClass}__borders--title`}>
+                Border Countries:
+              </strong>
+              {borders.map((border, index) => {
+                return (
+                  <div
+                    className={`${sectionClass}__border button`}
+                    role="button"
+                    key={index}
+                  >
+                    {border}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
     </div>

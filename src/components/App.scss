@@ -19,6 +19,15 @@
   padding: 2em;
 }
 
+.button {
+  display: flex;
+  align-items: center;
+  background-color: var(--elements-color);
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  box-shadow: 0px 0px 1px 1px var(--elements-color);
+}
+
 .read-the-docs {
   color: #888;
 }
