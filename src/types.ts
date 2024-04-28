@@ -38,7 +38,7 @@ export type CountryData = {
   translations: any;
   latlng: number[];
   landlocked: boolean;
-  borders: string[];
+  borders: string[] | undefined;
   area: number;
   demonyms: any;
   flag: symbol;

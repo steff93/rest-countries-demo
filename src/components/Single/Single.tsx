@@ -33,6 +33,8 @@ const CountryDetail = ({ countryData }: CountryDetailProps) => {
     console.log("go back!");
   };
 
+  console.log(borders);
+
   return (
     <div className={sectionClass}>
       <div className={`${sectionClass}__header`}>
@@ -91,17 +93,18 @@ const CountryDetail = ({ countryData }: CountryDetailProps) => {
               <strong className={`${sectionClass}__borders--title`}>
                 Border Countries:
               </strong>
-              {borders.map((border, index) => {
-                return (
-                  <div
-                    className={`${sectionClass}__border button`}
-                    role="button"
-                    key={index}
-                  >
-                    {border}
-                  </div>
-                );
-              })}
+              {borders &&
+                borders.map((border, index) => {
+                  return (
+                    <div
+                      className={`${sectionClass}__border button`}
+                      role="button"
+                      key={index}
+                    >
+                      {border}
+                    </div>
+                  );
+                })}
             </div>
           </div>
         </div>
