@@ -6,12 +6,14 @@ import { CountryData } from "../../types";
 import "./Single.scss";
 
 interface CountryDetailProps {
-  countryData: CountryData;
+  countryData: CountryData | null;
 }
 
 const sectionClass = "country-single";
 
 const CountryDetail = ({ countryData }: CountryDetailProps) => {
+  if (!countryData) return null;
+
   const { flags, name } = countryData;
   const flag = flags?.png;
   const countryName = name.common;

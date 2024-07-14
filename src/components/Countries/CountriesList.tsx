@@ -1,21 +1,24 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import useCountriesData from "../../hooks/useCountriesData";
 import { CountryData, Region } from "../../types";
 import { Search } from "../Search/Search";
-import CountryDetail from "../Single/Single";
 import Sort from "../Sort/Sort";
 import "./CountriesList.scss";
 import Country from "./Country";
 
-const CountriesList = () => {
+const CountriesList = ({
+  getCountryData,
+}: {
+  getCountryData: (data: CountryData) => void;
+}) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [sortRegion, setSortRegion] = useState<Region>("All");
   const [searchResults, setSearchResults] = useState<Array<CountryData>>([]);
-
   const { isLoading, countriesList } = useCountriesData();
+  const navigate = useNavigate();
 
   let listToUse = searchResults.length ? searchResults : countriesList;
-
   const countryRegions: Region[] = [];
 
   countriesList?.forEach((country) => {
@@ -29,7 +32,8 @@ const CountriesList = () => {
   };
 
   const handleCountryClick = (countryData: CountryData) => {
-    console.log(`Show ${countryData.name.common} details!`);
+    getCountryData(countryData);
+    navigate(`/rest-countries-demo/${countryData.name.common}`);
   };
 
   const handleSort = (region: Region) => {
@@ -59,13 +63,8 @@ const CountriesList = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchQuery]);
 
-  const demoData = listToUse?.length
-    ? listToUse.find((country) => country.name.common === "Moldova")
-    : undefined;
-
   return (
     <div className="countries" style={{ paddingTop: 100 }}>
-      {false && !!demoData && <CountryDetail countryData={demoData!} />}
       <div className="results-actions">
         <Search onSearchSubmit={handleSearchSubmit} />
         <Sort onSort={handleSort} regions={countryRegions} />

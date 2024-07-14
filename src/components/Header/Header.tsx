@@ -2,6 +2,7 @@ import { faMoon as regularMoon } from "@fortawesome/free-regular-svg-icons";
 import { faMoon as solidMoon } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Header.scss";
 
 type Theme = "dark" | "light";
@@ -11,6 +12,7 @@ const Header = () => {
   const themeName = theme === "dark" ? "Light Mode" : "Dark Mode";
   const themeIcon = theme === "dark" ? solidMoon : regularMoon;
   const headerRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
   const handleThemeChange = () => {
     setTheme((currentTheme) => (currentTheme === "dark" ? "light" : "dark"));
@@ -28,6 +30,10 @@ const Header = () => {
     }
   }, [theme]);
 
+  const handleClick = () => {
+    navigate("/rest-countries-demo/");
+  };
+
   useLayoutEffect(() => {
     document
       .querySelector("body")
@@ -39,7 +45,9 @@ const Header = () => {
 
   return (
     <div className="header" ref={headerRef}>
-      <h1 className="logo">Where in the world?</h1>
+      <h1 className="logo" onClick={handleClick}>
+        Where in the world?
+      </h1>
       <button className="theme-switcher" onClick={handleThemeChange}>
         <div className="theme-switcher__holder">
           <FontAwesomeIcon className="theme-switcher__icon" icon={themeIcon} />
