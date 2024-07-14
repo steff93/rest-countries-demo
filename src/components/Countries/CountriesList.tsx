@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import useCountriesData from "../../hooks/useCountriesData";
 import { CountryData, Region } from "../../types";
 import { Search } from "../Search/Search";
+import CountryDetail from "../Single/Single";
 import Sort from "../Sort/Sort";
 import "./CountriesList.scss";
 import Country from "./Country";
@@ -25,6 +26,10 @@ const CountriesList = () => {
 
   const handleSearchSubmit = (value: string) => {
     setSearchQuery(value);
+  };
+
+  const handleCountryClick = (countryData: CountryData) => {
+    console.log(`Show ${countryData.name.common} details!`);
   };
 
   const handleSort = (region: Region) => {
@@ -54,11 +59,13 @@ const CountriesList = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchQuery]);
 
-  // const demoData = listToUse?.length ? listToUse[34] : undefined;
+  const demoData = listToUse?.length
+    ? listToUse.find((country) => country.name.common === "Moldova")
+    : undefined;
 
   return (
     <div className="countries" style={{ paddingTop: 100 }}>
-      {/* {true && !!demoData && <CountryDetail countryData={demoData} />} */}
+      {false && !!demoData && <CountryDetail countryData={demoData!} />}
       <div className="results-actions">
         <Search onSearchSubmit={handleSearchSubmit} />
         <Sort onSort={handleSort} regions={countryRegions} />
@@ -75,6 +82,7 @@ const CountriesList = () => {
                 region={country.region}
                 capital={country.capital}
                 key={country.area + country.name.common}
+                onClick={() => handleCountryClick(country)}
               />
             );
           })}

@@ -7,6 +7,7 @@ interface CountryProps {
   population: number;
   region: string;
   capital: string[] | undefined;
+  onClick: () => void;
 }
 
 const Country = ({
@@ -15,9 +16,10 @@ const Country = ({
   population,
   region,
   capital,
+  onClick,
 }: CountryProps) => {
   return (
-    <a className="country-info">
+    <a className="country-info" onClick={onClick}>
       <img src={flag} alt={`${title}-flag`} />
 
       <div className="details">
