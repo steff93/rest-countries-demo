@@ -30,9 +30,11 @@ const CountryDetail = ({ countryData }: CountryDetailProps) => {
 
   const { getCountryNameByCCA3 } = useCountriesData();
 
-  const currenciesList = Object.values(currencies).reduce((acc, currency) => {
-    return [...acc, currency.name];
-  }, [] as string[]);
+  const currenciesList = currencies
+    ? Object.values(currencies).reduce((acc, currency) => {
+        return [...acc, currency.name];
+      }, [] as string[])
+    : undefined;
 
   const bordersCommonNames = getCountryNameByCCA3(borders);
 
@@ -86,7 +88,8 @@ const CountryDetail = ({ countryData }: CountryDetailProps) => {
                 <strong>Top Level Domain:</strong> .{domainName.toLowerCase()}
               </h5>
               <h5 className={`${sectionClass}__currency`}>
-                <strong>Currencies:</strong> {currenciesList.join(", ")}
+                <strong>Currencies:</strong>{" "}
+                {currenciesList ? currenciesList.join(", ") : "N/A"}
               </h5>
               <h5 className={`${sectionClass}__language`}>
                 <strong>Languages:</strong>{" "}
@@ -110,7 +113,7 @@ const CountryDetail = ({ countryData }: CountryDetailProps) => {
                       </div>
                     );
                   })
-                : "None"}
+                : "N/A"}
             </div>
           </div>
         </div>

@@ -18,12 +18,14 @@ export type CountryData = {
   independent: boolean;
   status: string;
   unMember: boolean;
-  currencies: {
-    [key: string]: {
-      name: string;
-      symbol: string;
-    };
-  };
+  currencies:
+    | {
+        [key: string]: {
+          name: string;
+          symbol: string;
+        };
+      }
+    | undefined;
   idd: {
     root: string;
     suffixes: string;
