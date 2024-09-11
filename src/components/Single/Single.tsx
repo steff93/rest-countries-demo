@@ -98,18 +98,19 @@ const CountryDetail = ({ countryData }: CountryDetailProps) => {
               <strong className={`${sectionClass}__borders--title`}>
                 Border Countries:
               </strong>
-              {bordersCommonNames &&
-                bordersCommonNames.map((border, index) => {
-                  return (
-                    <div
-                      className={`${sectionClass}__border button`}
-                      role="button"
-                      key={index}
-                    >
-                      {border}
-                    </div>
-                  );
-                })}
+              {bordersCommonNames
+                ? bordersCommonNames.map((border, index) => {
+                    return (
+                      <div
+                        className={`${sectionClass}__border button`}
+                        role="button"
+                        key={index}
+                      >
+                        {border}
+                      </div>
+                    );
+                  })
+                : "None"}
             </div>
           </div>
         </div>
