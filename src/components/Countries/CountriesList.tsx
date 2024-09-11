@@ -67,7 +67,7 @@ const CountriesList = ({
   }, [searchQuery]);
 
   return (
-    <div className="countries" style={{ paddingTop: 100 }}>
+    <div className="countries">
       <div className="results-actions">
         <Search onSearchSubmit={handleSearchSubmit} />
         <Sort onSort={handleSort} regions={countryRegions} />

@@ -1,5 +1,6 @@
 import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from "react-router-dom";
 import useCountriesData from "../../hooks/useCountriesData";
 import { formatNumber } from "../../miscHelpers";
 import { CountryData } from "../../types";
@@ -13,6 +14,8 @@ const sectionClass = "country-single";
 
 const CountryDetail = ({ countryData }: CountryDetailProps) => {
   if (!countryData) return null;
+
+  const navigate = useNavigate();
 
   const { flags, name } = countryData;
   const flag = flags?.png;
@@ -39,7 +42,7 @@ const CountryDetail = ({ countryData }: CountryDetailProps) => {
   const bordersCommonNames = getCountryNameByCCA3(borders);
 
   const handleBackAction = () => {
-    console.log("go back!");
+    navigate("/rest-countries-demo/");
   };
 
   return (

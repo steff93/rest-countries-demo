@@ -6,10 +6,10 @@
   justify-content: space-between;
   background-color: #2b3743;
 
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
-  width: 100%;
+  margin-left: -4rem;
+  width: calc(100% + 4rem * 2);
   padding: 2rem 4rem;
   box-sizing: border-box;
 
