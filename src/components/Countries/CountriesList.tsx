@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useCountriesData from "../../hooks/useCountriesData";
+import { formatCountryName } from "../../miscHelpers";
 import { CountryData, Region } from "../../types";
 import { Search } from "../Search/Search";
 import Sort from "../Sort/Sort";
@@ -33,7 +34,9 @@ const CountriesList = ({
 
   const handleCountryClick = (countryData: CountryData) => {
     getCountryData(countryData);
-    navigate(`/rest-countries-demo/${countryData.name.common}`);
+
+    const url = formatCountryName(countryData.name.common);
+    navigate(`/rest-countries-demo/${url}`);
   };
 
   const handleSort = (region: Region) => {
