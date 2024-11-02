@@ -11,3 +11,10 @@ export const formatNumber = (number: number) => {
 export const formatCountryName = (countryName: string) => {
   return countryName.replace(/\s+/g, "-").toLowerCase();
 };
+
+/**
+ * Replace dashes with spaces in a country name. Used for fetching single country
+ */
+export const formatNameForFetch = (name: string) => {
+  return name.replace("-", " ");
+};

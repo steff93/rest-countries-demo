@@ -1,8 +1,11 @@
 import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useNavigate } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { useNavigate, useParams } from "react-router-dom";
+import { getSingleCountryRoute } from "../../apiConfig";
+import { getApiData } from "../../dataHelpers";
 import useCountriesData from "../../hooks/useCountriesData";
-import { formatNumber } from "../../miscHelpers";
+import { formatNameForFetch, formatNumber } from "../../miscHelpers";
 import { CountryData } from "../../types";
 import "./Single.scss";
 
@@ -12,8 +15,28 @@ interface CountryDetailProps {
 
 const sectionClass = "country-single";
 
+const CountryInterceptor = ({ countryName }: { countryName: string }) => {
+  const country = formatNameForFetch(countryName || "");
+
+  const {
+    data: countryData,
+  }: { isLoading: boolean; data: Array<CountryData> | undefined } = useQuery({
+    queryKey: ["single"],
+    queryFn: () => getApiData(getSingleCountryRoute(country)),
+  });
+
+  if (countryData) {
+    return <CountryDetail countryData={countryData[0]} />;
+  }
+  return null;
+};
+
 const CountryDetail = ({ countryData }: CountryDetailProps) => {
-  if (!countryData) return null;
+  if (!countryData) {
+    const { countryName } = useParams();
+
+    return <CountryInterceptor countryName={countryName || ""} />;
+  }
 
   const navigate = useNavigate();
 
