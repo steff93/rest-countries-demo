@@ -22,11 +22,11 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <Routes>
           <Route
-            path="/rest-countries-demo/"
+            path="/"
             element={<CountriesList getCountryData={getCountryData} />}
           ></Route>
           <Route
-            path="/rest-countries-demo/:countryName"
+            path="/:countryName"
             element={<CountryDetail countryData={countryData} />}
           ></Route>
         </Routes>

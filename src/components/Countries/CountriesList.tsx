@@ -36,7 +36,7 @@ const CountriesList = ({
     getCountryData(countryData);
 
     const url = formatCountryName(countryData.name.common);
-    navigate(`/rest-countries-demo/${url}`);
+    navigate(`/${url}`);
   };
 
   const handleSort = (region: Region) => {

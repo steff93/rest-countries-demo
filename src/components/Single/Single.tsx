@@ -42,7 +42,7 @@ const CountryDetail = ({ countryData }: CountryDetailProps) => {
   const bordersCommonNames = getCountryNameByCCA3(borders);
 
   const handleBackAction = () => {
-    navigate("/rest-countries-demo/");
+    navigate(-1);
   };
 
   return (

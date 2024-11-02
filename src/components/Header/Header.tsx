@@ -31,7 +31,7 @@ const Header = () => {
   }, [theme]);
 
   const handleClick = () => {
-    navigate("/rest-countries-demo/");
+    navigate("/");
   };
 
   useLayoutEffect(() => {
