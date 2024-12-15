@@ -54,23 +54,16 @@
 
   &__borders {
     flex-basis: 100%;
+    gap: 15px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
 
     margin-top: 20px;
-
-    &--title {
-      margin-right: 15px;
-    }
   }
 
   &__border {
     padding: 2px 16px;
-
-    &:not(:last-child) {
-      margin-right: 9px;
-    }
   }
 
   &__name {
