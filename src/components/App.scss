@@ -1,12 +1,21 @@
 #root {
+  --page-wide-padding: 4rem;
   width: 100%;
   margin: 0 auto;
-  padding: 0 4rem;
+
   text-align: center;
+}
+
+.main {
+  padding: 0 var(--page-wide-padding);
 
   @media (max-width: 767px) {
     padding: 0 2rem;
   }
+}
+
+.footer {
+  padding: 2rem var(--page-wide-padding);
 }
 
 @media (prefers-reduced-motion: no-preference) {

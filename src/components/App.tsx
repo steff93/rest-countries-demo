@@ -19,18 +19,23 @@ function App() {
   return (
     <>
       <Header />
-      <QueryClientProvider client={queryClient}>
-        <Routes>
-          <Route
-            path="/rest-countries-demo/"
-            element={<CountriesList getCountryData={getCountryData} />}
-          ></Route>
-          <Route
-            path="/rest-countries-demo/:countryName"
-            element={<CountryDetail countryData={countryData} />}
-          ></Route>
-        </Routes>
-      </QueryClientProvider>
+
+      <div className="main">
+        <QueryClientProvider client={queryClient}>
+          <Routes>
+            <Route
+              path="/rest-countries-demo/"
+              element={<CountriesList getCountryData={getCountryData} />}
+            ></Route>
+            <Route
+              path="/rest-countries-demo/:countryName"
+              element={<CountryDetail countryData={countryData} />}
+            ></Route>
+          </Routes>
+        </QueryClientProvider>
+      </div>
+
+      <div className="footer"></div>
     </>
   );
 }
