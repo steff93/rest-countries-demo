@@ -1,7 +1,7 @@
 import { faMoon as regularMoon } from "@fortawesome/free-regular-svg-icons";
 import { faMoon as solidMoon } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Header.scss";
 
@@ -11,7 +11,6 @@ const Header = () => {
   const [theme, setTheme] = useState<Theme>("dark");
   const themeName = theme === "dark" ? "Light Mode" : "Dark Mode";
   const themeIcon = theme === "dark" ? solidMoon : regularMoon;
-  const headerRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
 
   const handleThemeChange = () => {
@@ -34,17 +33,8 @@ const Header = () => {
     navigate("/rest-countries-demo/");
   };
 
-  useLayoutEffect(() => {
-    document
-      .querySelector("body")
-      ?.style.setProperty(
-        "--headerHeight",
-        ` ${headerRef.current?.clientHeight || 0}px `
-      );
-  });
-
   return (
-    <div className="header" ref={headerRef}>
+    <div className="header">
       <h1 className="logo" onClick={handleClick}>
         Where in the world?
       </h1>
