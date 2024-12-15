@@ -15,6 +15,7 @@
 
   will-change: color, background-color;
   transition: all 200ms ease-in-out;
+  box-shadow: var(--box-shadow);
 
   .logo {
     font-family: NunitoExtra;

@@ -1,6 +1,7 @@
 .sort {
   position: relative;
   cursor: pointer;
+  box-shadow: var(--box-shadow);
 
   &__select {
     background-color: var(--elements-color);
@@ -31,6 +32,7 @@
 
     padding: 10px 0;
     border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
   }
 
   &__region {

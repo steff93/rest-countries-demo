@@ -7,6 +7,7 @@
 
   &__back-button {
     padding: 5px 32px;
+    box-shadow: var(--box-shadow);
   }
 
   &__back-icon {
@@ -64,6 +65,7 @@
 
   &__border {
     padding: 2px 16px;
+    box-shadow: var(--box-shadow);
   }
 
   &__name {
